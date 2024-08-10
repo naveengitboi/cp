@@ -13,7 +13,6 @@ vector<int> kahnsAlgo(vector<vector<int>> adj){
   for(int i =0; i<n;i++){
     for(auto node: adj[i]){
       indegrees[node] += 1;
-
     }
   }
 
