@@ -13,13 +13,13 @@ public:
 class solution {
 
 public:
-  bool dfs(int k, vector<int> *adj, vector<int> &path, vector<int> &visited) {
+  bool dfs(int k, vector<int> *adj, vector<int> &path, vector<int> &visited, vector<int> ans) {
     visited[k] = 1;
     path[k] = 1;
 
     for (auto each : adj[k]) {
       if (!visited[each]) {
-        if (dfs(each, adj, path, visited)) {
+        if (dfs(each, adj, path, visited, ans)) {
           return true;
         }
       } else if (path[k]) {
@@ -28,17 +28,17 @@ public:
     }
 
     path[k] = 0;
+    ans.push_back(k);
 
     return 0;
   }
   bool cycle(vector<int> *adj, int n) {
 
+    vector<int> ans; 
     vector<int> path(n, 0), visited(n, 0);
     for (int i = 0; i < n; i++) {
       if (!visited[i]) {
-        if (dfs(i, adj, path, visited)) {
-          return true;
-        }
+        dfs(i, adj, path, visited, ans);
       }
     }
 
