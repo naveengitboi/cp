@@ -14,7 +14,7 @@ public:
 class solution {
 
 public: 
-  int majority(vector<int> &arr){
+  int majority(vector<int> &arr, int k){
     
     int cnt = 0;
     int num;
@@ -33,7 +33,7 @@ public:
       }
     }
 
-    return num;
+    return num==k;
 
   }
 };
