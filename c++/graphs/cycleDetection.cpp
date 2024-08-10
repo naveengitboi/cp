@@ -3,7 +3,7 @@
 using namespace std;
 
 
-vector<int> kahnsAlgo(vector<vector<int>> adj){
+bool kahnsAlgo(vector<vector<int>> adj){
   int n = adj.size();
   vector<int> indegrees(n,0);
   
@@ -37,6 +37,6 @@ vector<int> kahnsAlgo(vector<vector<int>> adj){
 
   }
 
-  return ans;
+  return ans.size() != n;
 
 }
