@@ -1,24 +1,34 @@
 #include <bits/stdc++.h>
 #include <cmath>
 using namespace std;
+
+class Node{
+public:
+  int data;
+  Node* next;
+  Node(int data, Node* next): data(data), next(next) {};
+  Node(int data) : data(data), next(nullptr) {};
+};
+
 class solution {
 public:
-  void arrangeColors(vector<int> &arr) {
-    map<int, int> mpp ;
+  Node* sortList(Node* head) {
 
-    for(auto it: arr){
-      mpp[it] ++;
+    Node* curr = head;
+    vector<int> nums;
+    while(curr){
+      nums.push_back(curr->data);
+      curr = curr->next;
     }
 
-    int j =0;
-    for(int i =0;i<3; i++){
-        while(mpp[i]){
-        arr[j] = i;
-        j+=1;
-        mpp[i]--;
-      }
-    }
+    sort(nums.begin(), nums.end());
 
-    
+    Node* temp = head;
+    for(int i =0; i< nums.size(); i++){
+      temp->data = nums[i];
+      temp = temp->next;
+    }
+    return head;
+
   }
 };
