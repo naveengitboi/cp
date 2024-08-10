@@ -10,25 +10,30 @@ public:
   Node(int data) : data(data), next(nullptr) {};
 };
 
+// >n/2 problem moore voting algorithm
 class solution {
-public:
-  Node* sortList(Node* head) {
 
-    Node* curr = head;
-    vector<int> nums;
-    while(curr){
-      nums.push_back(curr->data);
-      curr = curr->next;
+public: 
+  int majority(vector<int> &arr){
+    
+    int cnt = 0;
+    int num;
+    for(auto it: arr){
+      if(!cnt){
+        num = it;
+        cnt+=1;
+      }
+      else{
+        if(num != it){
+          cnt--;
+        }
+        else{
+          cnt++;
+        }
+      }
     }
 
-    sort(nums.begin(), nums.end());
-
-    Node* temp = head;
-    for(int i =0; i< nums.size(); i++){
-      temp->data = nums[i];
-      temp = temp->next;
-    }
-    return head;
+    return num;
 
   }
 };
