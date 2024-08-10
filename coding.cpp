@@ -14,26 +14,38 @@ public:
 class solution {
 
 public: 
-  int majority(vector<int> &arr, int k){
-    
-    int cnt = 0;
-    int num;
-    for(auto it: arr){
-      if(!cnt){
-        num = it;
-        cnt+=1;
-      }
-      else{
-        if(num != it){
-          cnt--;
+  bool dfs(int k, vector<int>* adj, vector<int>& path, vector<int>& visited)
+{
+    visited[k] = 1;
+      path[k] = 1;
+
+      for(auto each: adj[k]){
+        if(!visited[each]){
+          if(dfs(each, adj, path, visited)) {
+            return true;
+         }
         }
-        else{
-          cnt++;
+        else if(path[k]){
+        return true;
+        }
+    }
+
+    path[k]= 0;
+      
+    return 0;
+  }
+  bool cycle(vector<int>*adj, int n){
+    
+    vector<int> path(n, 0), visited(n, 0);
+    for(int i =0; i< n ; i++){
+      if(!visited[i]){
+        if(dfs(i, adj, path, visited)){
+          return true;
         }
       }
     }
 
-    return num==k;
-
+    return 0;
   }
+
 };
