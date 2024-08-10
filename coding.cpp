@@ -13,7 +13,7 @@ public:
     int j =0;
     for(int i =0;i<3; i++){
         while(mpp[i]){
-        arr[j] = 0;
+        arr[j] = i;
         j+=1;
         mpp[i]--;
       }
