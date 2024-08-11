@@ -23,6 +23,17 @@ long xorSequence(long l, long r) {
 
 long sumXor(long n){
 
+  long ans;
+  long cnt;
+  while(n){
+    long t = n&1;
+    if(t == 0){
+      cnt++;
+    }
+    n>>=1;
+  }
+
+  return ans<<cnt;
 }
 
 int main(){
