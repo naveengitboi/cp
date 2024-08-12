@@ -2,71 +2,65 @@
 #include <cmath>
 using namespace std;
 
-#define vt vector<int>
 const int N = 1e5+5;
-vt g[N];
-vt height(N);
+vector<int> g[N];
+vector<int> height(N);
 
+const int ACTIVE_NODE = 1;
+const int EXPLORED_NODE = 2;
 
-void dfs(int curr,vt& edges, vt &path, vt&visited, int depth, int result){
-  
-  if(visited[curr] and !path[curr]){
-      result = max(result, depth-height[curr]);
-    return;
-  }
-  if(visited[curr] and path[curr]){
-    result = max(result, depth-height[curr]);
-  }
-
-  visited[curr] = true;
-  path[curr] = 1;
-
-  for(auto node: g[curr] ){
-    dfs(node, edges, path, visited, depth+1, result);
-  }
-
-  path[curr] = 0;
-}
-
-int longestCylce(vt&edges){
-  int n = edges.size();
-  for(int i = 0 ; i< n; i++){
-    if(edges[i]!= -1){
-      g[i].push_back(edges[i]);
+class Solution {
+    void dfs (int src, int depth, vector<int>& visited, int& longest_cycle) {
+        if (visited[src] == ACTIVE_NODE) {
+            longest_cycle = max (longest_cycle, depth - height[src]);
+            return;
+        } 
+        if (visited[src] == EXPLORED_NODE) return;
+        
+        visited[src] = ACTIVE_NODE;
+        height[src] = depth;        
+        
+        for (auto i : g[src]) dfs (i, depth+1, visited, longest_cycle);
+        
+        visited[src] = EXPLORED_NODE;
     }
-  }
-
-  int result = -1;
-  vt visited(n, false);
-  vt path(n, 0);
-
-  for(int j = 0; j<n; j++){
-    dfs(j, edges, path, visited, 1, result);
-  }
-
-  for(int j = 0; j< n; j++){
-    height[j] = 0;
-    g[j].clear();
-  }
-
-  return result;
-  
+    
+public:
+    int longestCycle(vector<int>& edges) {
+        int n = edges.size();
+        for (int j = 0; j < n; j ++) 
+            if (edges[j] != -1) g[j].push_back(edges[j]);
+        
+        int result = -1;
+        vector<int> visited (n, false);
+        
+        for (int j = 0; j < n; j ++) {
+            dfs (j, 1, visited, result);
+        }
+        
+        for (int j = 0; j < n; j ++) {
+            height[j] = 0;
+            g[j].clear();
+        }
+        return result;
+    }
 };
 
 
 int main(){
   int n;
   cin>>n;
-  vt edges;
+  vector<int> edges;
   for(int i = 0; i< n; i++){
     int node;
     cin>>node;
     edges.push_back(node);
   }
 
-  int ans = longestCylce(edges);
+  auto ans =new Solution;
+  int result = ans->longestCycle(edges);
 
-  cout<<ans;
+  cout<<result;
   
   return 0;
 }
