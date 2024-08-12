@@ -1,43 +1,29 @@
-#!/bin/python3
+n ,m , k = map(int, input().split())
+grid_points = 0
+mapper ={}
 
-import sys
-import itertools
+for _ in range(k):
+    r, c1, c2 = map(int, input().split())
+    if r in mapper:
+        mapper[r].append((c1, c2))
+    else:
+        mapper[r] = [(c1, c2)]
 
-def initialize(s):
-    # This function is called once before all queries.
-    pass
-    
-def check_palin(s,l):
-    count_max = 0
-    cmax = 0
-    for i in range(2,l+1):
-        a = itertools.permutations(s,i)
-        a = set(a)
-        for j in a:
-            if j == j[::-1]:
-                if (i>cmax):
-                    count_max=1
-                    cmax = i
-                else:
-                    count_max+=1
-    return (count_max)
-    
-def answerQuery(l, r, st):
-    # Return the answer for this query modulo 1000000007.
-    m = 1000000007
-    s=''
-    for i in range(l-1, r):
-        s+=st[i]
-    ans = check_palin(s, r-l+1)   
-    return (ans % m)
 
-if __name__ == "__main__":
-    s = input().strip()
-    #initialize(s)
-    q = int(input().strip())
-    for a0 in range(q):
-        l, r = input().strip().split(' ')
-        l, r = [int(l), int(r)]
-        result = answerQuery(l, r, s)
-        print(result)
 
+for k in mapper:
+    temp = mapper[k]
+    temp.sort()
+    begin = temp[0][0]
+    end = temp[0][1]
+    points = 0
+    for i in range(1, len(temp)):
+        if temp[i][0] > end:
+            points +=  end - begin + 1
+            begin  = temp[i][0]
+            end = temp[i][1]
+        else:
+            end = max(end, temp[i][1])
+    points += end - begin + 1
+    grid_points += points
+print(m*n - grid_points)
