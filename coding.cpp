@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+#include <sys/types.h>
 using namespace std;
 
 /* clang-format off */
@@ -66,6 +67,9 @@ public:
 
 /* Main()  function */
 int main() { 
+
+  int n;
+  cin>>n;
 
 
 
