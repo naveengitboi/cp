@@ -4,15 +4,12 @@ using namespace std;
 
 void dfs(int cur, vector<vector<int>>adj, vector<int> & visited, stack<int>  &s){
   visited[cur] = 1;
-
   for(auto k: adj[cur]){
     if(!visited[k]){
       dfs(k, adj, visited, s);
     }
   }
-
   s.push(cur);
-
 }
 
 
@@ -27,7 +24,6 @@ vector<int> topologicalSort(vector<vector<int>> adj ){
       dfs(i, adj, visited, s);
     }
   }
-
   while(!s.empty()){
     int x = s.top();
     ans.push_back(x);
