@@ -1,5 +1,6 @@
 #include <bits/stdc++.h>
 #include <sys/types.h>
+#include <unordered_map>
 using namespace std;
 
 /* clang-format off */
@@ -56,13 +57,6 @@ public:
   Node(int data, Node *next) : data(data), next(next){};
   Node(int data) : data(data), next(nullptr){};
 };
-
-
-
-
-
-
-
 
 
 /* Main()  function */
