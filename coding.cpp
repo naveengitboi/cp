@@ -58,16 +58,12 @@ public:
   Node(int data) : data(data), next(nullptr){};
 };
 
-
 /* Main()  function */
-int main() { 
+int main() {
 
   int n;
-  cin>>n;
+  cin >> n;
 
-
-
-  return 0; 
-
+  return 0;
 }
 /* Main() Ends Here */
