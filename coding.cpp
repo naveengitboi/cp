@@ -15,37 +15,48 @@ using namespace std;
 #define ull unsigned long long
 
 /* Main()  function */
-
-ull primeCount(ull n){
-  ull cnt;
-  ull prod;
-  ull prime;
-
-  if( n<=1) return 0;
-
-  prod = 2;
-  cnt = 1;
-
-  for(prime = 3; prime*prod  <= n; prime+=2){
-    if(__gcd(prime, prod) == 1){
-      cnt++;
-      prod = prod*prime;
-    }
+int getDigitsSum(int num){
+  int ans = 0;
+  while(num){
+    ans += num%10;
+    num /= 10;
   }
 
-  return cnt;
+  return ans;
+}
+
+int bestDivisor(int n){
+  int sol = 0, ans = 0;
+  for(int i = 1; i*i <= n; i++){
+    if(n%i == 0){
+      
+      int sum = getDigitsSum(i);
+      if(sol < sum){
+        sol = sum;
+        ans = i;
+      }
+      if(sol == sum){
+        ans = min(ans, i);
+      }
+      if(i != n/i){
+        int sum = getDigitsSum(n/i);
+      if(sol < sum){
+        sol = sum;
+        ans = n/i;
+      }
+      if(sol == sum){
+        ans = min(ans, n/i);
+      }
+      }
+    }
+  }
+  return sol;
 }
 
 int main() {
   unsigned long long int n;
   cin >> n;
-  while(n){
-    ull q;
-    cin >> q;
-    cout<<primeCount(q) << "\n";
-    n--;
-  }
-  
+  cout<<bestDivisor(n)<<"\n";
   return 0;
 }
 /* Main() Ends Here */
