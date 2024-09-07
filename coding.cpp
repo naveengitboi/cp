@@ -15,48 +15,26 @@ using namespace std;
 #define ull unsigned long long
 
 /* Main()  function */
-int getDigitsSum(int num){
-  int ans = 0;
-  while(num){
-    ans += num%10;
-    num /= 10;
-  }
-
-  return ans;
-}
-
-int bestDivisor(int n){
-  int sol = 0, ans = 0;
-  for(int i = 1; i*i <= n; i++){
-    if(n%i == 0){
-      
-      int sum = getDigitsSum(i);
-      if(sol < sum){
-        sol = sum;
-        ans = i;
-      }
-      if(sol == sum){
-        ans = min(ans, i);
-      }
-      if(i != n/i){
-        int sum = getDigitsSum(n/i);
-      if(sol < sum){
-        sol = sum;
-        ans = n/i;
-      }
-      if(sol == sum){
-        ans = min(ans, n/i);
-      }
-      }
-    }
-  }
-  return sol;
-}
 
 int main() {
-  unsigned long long int n;
-  cin >> n;
-  cout<<bestDivisor(n)<<"\n";
+  int t;
+  cin>>t;
+  while(t--){
+    int n;
+    cin>>n;
+    int p;
+    cin>>p;
+    int g;
+    for(int i = 0; i< n-1;i++){
+      int q;
+      cin>>q;
+      g = __gcd(p, q);
+      p = g;
+    }
+    if(g == 1) cout<< "YES";
+    else cout<<"NO";
+    
+  }
   return 0;
 }
 /* Main() Ends Here */
