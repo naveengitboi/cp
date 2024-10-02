@@ -1,4 +1,6 @@
 #include <bits/stdc++.h>
+#include <iostream>
+#include <unordered_map>
 using namespace std;
 
 #define vvi vector<vector<int>>
@@ -87,6 +89,28 @@ int countZeroTuples(vi& a, vi& b , vi& c, vi& d){
                     }
                     
                 }
+            }
+        }
+    }
+
+    return count;
+}
+
+int countZeroTuplesMethodTwo(vi& a, vi& b , vi& c, vi& d){
+    int count = 0;
+    unordered_map<int,int> sumMap;
+
+    for(auto nc : c){
+        for(auto nd : d){
+            sumMap[nc+nd]++;
+        }
+    }
+
+    for(auto na: a){
+        for(auto nb: b){
+            int sum = -(na+nb);
+            if(sumMap.find(sum) != sumMap.end()){
+                count+= sumMap[sum];
             }
         }
     }
