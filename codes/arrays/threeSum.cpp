@@ -37,3 +37,41 @@ vvi threeSumOptimal(vi& nums){
     return ans;
 }
 
+
+
+int threeSumClosest(vi& nums, int target){
+    int n = nums.size();
+    int maxDiff = INT_MAX;
+    int ans = 0;
+    sort(begin(nums), end(nums));
+    for(int i = 0;i < n; i++){
+        if(i > 0 && nums[i] == nums[i-1]){
+            continue;
+        }
+        int j = i+1;
+        int k = n-1;
+        int l = target - nums[i];
+        while(j < k){
+           int sum = nums[j] + nums[k];
+            if(abs(l - sum) < maxDiff){
+                ans = (sum + nums[i]);
+                maxDiff = abs(l-sum);
+            }
+            if(sum > l) k--;
+            else j++;
+        }
+    }
+    return ans;
+}
+
+
+
+
+
+
+
+
+
+
+
+
