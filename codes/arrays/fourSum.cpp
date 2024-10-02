@@ -48,3 +48,48 @@ vvi fourSum(vi& nums, int target){
     return ans;
 }
 
+
+//four sum problem 2
+//
+
+int countZeroTuples(vi& a, vi& b , vi& c, vi& d){
+    int count = 0;
+    int n = a.size();
+    sort(begin(a), end(a));
+    sort(begin(b), end(b));
+    sort(begin(c), end(c));
+    sort(begin(d), end(d));
+
+    for(int i = 0; i< n; i++){
+        if(i > 0 && a[i] == a[i-1]){
+            continue;
+        }
+        for(int j = 0; j< n ; j++){
+            if(j > 0 && b[j] == b[j-1]){
+                continue;
+            }
+            for(int k = 0; k < n; k++){
+
+                if(k > 0 && c[k] == c[k-1]){
+                    continue;
+                }
+                for(int l = 0; l < n; l++){
+
+                    if(l > 0 && d[l] == d[l-1]){
+                        continue;
+                    }
+                    int sum = a[i];
+                    sum+= b[j];
+                    sum+= c[k];
+                    sum+= d[l];
+                    if(sum == 0){
+                        count++;
+                    }
+                    
+                }
+            }
+        }
+    }
+
+    return count;
+}
