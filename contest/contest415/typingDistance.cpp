@@ -2,7 +2,8 @@
 #include <utility>
 using namespace std;
 
-
+//hackerank exam problem
+//can also be done using hashmaps...
 
 pair<int, int> getLocation(vector<string>& vect, char ele){
     pair<int, int> location;
@@ -17,6 +18,7 @@ pair<int, int> getLocation(vector<string>& vect, char ele){
     }
     return location;
 }
+
 int typingDistance(string& s){
     vector<string> vect{
         "QWERTYUIOP",
@@ -29,6 +31,9 @@ int typingDistance(string& s){
     auto p = getLocation(vect, s[0]);
     x1 = p.first;
     y1 = p.second;
+    if(s[0] != 'Q'){
+        distance += (x1 + y1);
+    }
     for(int i = 1; i< len; i++){
         pair<int,int> currentLocation = getLocation(vect,s[i]);
         int x2 = currentLocation.first;
