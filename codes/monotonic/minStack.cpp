@@ -5,6 +5,7 @@ using namespace std;
 class Minstack{
 public:
     stack<pair<int, int>> st;
+    int mini;
     void push(int x){
         if(st.empty() || st.top().second > x){
             st.push({x, x});
@@ -12,10 +13,14 @@ public:
         if(st.top().second < x){
             st.push({x, st.top().second});
         }
+        mini = st.top().second;
     }
     void pop(){
         if(!st.empty()){
             st.pop();
+        }
+        if(!st.empty()){
+            mini = st.top().second;
         }
     }
     int top(){
@@ -25,10 +30,7 @@ public:
         return -1;
     }
     int getMin(){
-        if(!st.empty()){
-            return st.top().second;
-        }
-        return -1;
+        return mini;
     }
 };
 
