@@ -24,7 +24,7 @@ int romanToInt(string s){
         if(curr < prev){
             ans -= curr;
         }else{
-            ans += prev;
+            ans += curr;
         }
         prev = curr;
     }
