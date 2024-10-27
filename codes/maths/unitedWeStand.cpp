@@ -19,20 +19,14 @@ void printVect(vi& vect){
     cout<<endl;
 }
 
-void solve(int n, vi& a){
+void solve(int n, vi& a, int mx){
     vi b;
     vi c;
     for(int i = 0;i < n;i++){
-        bool found = true;
-        for(int j = 0; j< n;j++){
-            if(i != j && a[j]%a[i] == 0){
-                found = false;
-                b.push_back(a[i]);
-                break;
-            }
-        }
-        if(found){
+        if(a[i] == mx){
             c.push_back(a[i]);
+        }else{
+            b.push_back(a[i]);
         }
     }
     if(b.size() == 0 or c.size() == 0){
@@ -52,10 +46,12 @@ int main() {
         int n;
         cin>>n;
         vi vect(n);
+        int mx = 0;
         for(int i = 0; i< n;i++){
             cin>>vect[i];
+            mx = max(mx, vect[i]);
         }
-        solve(n, vect);
+        solve(n, vect, mx);
     }
 
     return 0;
