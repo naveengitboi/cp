@@ -13,6 +13,7 @@ using namespace std;
 #define mll map<long long, long long>
 
 void print(vi& vect){
+    cout<<vect.size()<<endl;
     for(int i =  0; i< vect.size(); i++){
         cout<<vect[i]<<" ";
     }
@@ -52,6 +53,35 @@ void solve(int n, int k, int x){
 
 }
 
+void forbiddenInt(int n, int k, int x){
+    if(x != 1){
+        vi vect(n, 1);
+        cout<<"YES"<<endl;
+        print(vect);
+    }
+    else{
+        if(k == 1){
+            cout<<"NO"<<endl;
+        }
+        else if(!(n&1)){
+            int p = n/2;
+            vi vect(p, 2);
+            cout<<"YES"<<endl;
+            print(vect);
+        }else{
+            if(k>= 3){
+                int p = n/2 - 1;
+                vi vect(p, 2);
+                vect.push_back(3);
+                cout<<"YES"<<endl;
+                print(vect);
+            }else{
+                cout<<"NO"<<endl;
+            }
+        }
+    }
+}
+
 
 int main() {
     int t;
@@ -59,7 +89,7 @@ int main() {
     while(t--){
         int n,k, x;
         cin>>n>>k>>x;
-        solve(n, k, x);
+        forbiddenInt(n, k, x);
     }
 
     return 0;
