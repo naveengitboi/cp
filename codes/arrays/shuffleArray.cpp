@@ -1,3 +1,4 @@
+//fisher yets algorithm
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -14,16 +15,26 @@ using namespace std;
 
 
 class Solution {
-public:
+private:
     vi original;
+    int n;
+public:
     Solution(vi& nums){
         original = nums;
+        n = nums.size();
     } 
     vi reset(){
-
+        return original;
     }
     vi shuffle(){
-
+        vi shuffled = original;
+        int pointer = n;
+        for(int i = n-1; i > 0; i--){
+            int j = rand() % pointer;
+            swap(shuffled[i], shuffled[j]);
+            pointer--;
+        }
+        return shuffled;
     }
 };
 
