@@ -25,7 +25,8 @@ public:
             for(auto & v: adj[node]){
                 if(color[v] == color[node]) return false;
                 if(color[v] == -1){
-                    if(!BFS(adj, v, color, 1- currColor)) return false;
+                    color[v] = 1-color[u];
+                    q.push(v);
                 }
             }
         }
