@@ -29,6 +29,7 @@ public:
         priority_queue<pii, vector<pii>, greater<pii>> pq;
         pq.push({0, 1});
         vi result(n+1, INT_MAX);
+        result[1] = 0;
         vi parent(n+1);
         for(int i = 0; i<=n; i++){
             parent[i] = i;
@@ -39,8 +40,8 @@ public:
             int node = pq.top().second;
 
             for(auto& vect: adj[node]){
-                int adjNode = vect[0];
-                int wt = vect[1];
+                int adjNode = vect.first;
+                int wt = vect.second;
 
                 if(wt+dist < result[adjNode]){
                     result[adjNode] = wt+dist;
