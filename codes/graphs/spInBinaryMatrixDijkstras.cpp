@@ -20,6 +20,9 @@ public:
         int m = grid.size();
         int n = grid[0].size();
         if(m == 0 || n == 0 || grid[0][0] == 1) return -1;
+        auto isValid = [&](int x, int y){
+            return x>=0 && x< m && y>=0 && y<n;
+        };
 
         typedef pair<int, pair<int, int>>P;
         priority_queue<P, vector<P>, greater<P>>pq;
