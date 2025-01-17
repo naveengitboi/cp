@@ -73,6 +73,12 @@ public:
             }
         }
 
+        auto compare = [&](vi& a, vi& b){
+            return a[2]< b[2];
+        };
+
+        sort(begin(vect), end(vect), compare);
+
         return kruskalsMST(V, vect);
 
     }
