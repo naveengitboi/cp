@@ -13,24 +13,18 @@ using namespace std;
 #define si set<int>
 #define mll map<long long, long long>
 
-
-
-
-
 int main() {
-    int n;
-    cin>>n;
-    int ans = INT_MAX;
-    for(int i = 0; i< n; i++){
-        int temp;
-        cin>>temp;
-        if(temp < 0){
-            temp = abs(temp);
-        }
-        ans = min(temp, ans);
+  int n;
+  cin >> n;
+  int ans = INT_MAX;
+  for (int i = 0; i < n; i++) {
+    int temp;
+    cin >> temp;
+    if (temp < 0) {
+      temp = abs(temp);
     }
-    cout<<ans<<endl;
-    return 0;
+    ans = min(temp, ans);
+  }
+  cout << ans << endl;
+  return 0;
 }
-
-

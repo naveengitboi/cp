@@ -12,38 +12,34 @@ using namespace std;
 #define si set<int>
 #define mll map<long long, long long>
 
-
-
-bool solve(vi& nums, int n, int k){
-    if(k == 1){
-        vi temp = nums;
-        sort(nums.begin(), nums.end());
-        if(temp != nums) return false;
-        return true;
-    }
+bool solve(vi &nums, int n, int k) {
+  if (k == 1) {
+    vi temp = nums;
+    sort(nums.begin(), nums.end());
+    if (temp != nums)
+      return false;
     return true;
+  }
+  return true;
 }
-
 
 int main() {
-    int t;
-    cin>>t;
-    while(t--){
-        int n, k;
-        cin>>n >> k;
-        vi nums(n);
-        for(int i = 0; i< n; i++){
-            cin>> nums[i];
-        }
-        bool ans = solve(nums, n, k);
-        if(ans){
-            cout<<"YES"<<endl;
-        }else{
-            cout<<"NO"<<endl;
-        }
+  int t;
+  cin >> t;
+  while (t--) {
+    int n, k;
+    cin >> n >> k;
+    vi nums(n);
+    for (int i = 0; i < n; i++) {
+      cin >> nums[i];
     }
+    bool ans = solve(nums, n, k);
+    if (ans) {
+      cout << "YES" << endl;
+    } else {
+      cout << "NO" << endl;
+    }
+  }
 
-    return 0;
+  return 0;
 }
-
-
