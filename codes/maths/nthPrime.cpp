@@ -14,29 +14,25 @@ using namespace std;
 #define mll map<long long, long long>
 
 
-int smallestNumber(int n){
-	while(1){
-		int i = 11;
-		for(i; i <= 20; i++){
-			if(n%i != 0){
-				break;
-			}
-		}
-		if(i == 21){
-			break;
-		}
-		n++;
-	}
-	return n;
+bool isPrime(int n){
+    for(int i = 2; i*i <= n ; i++){
+        if(n%i == 0){
+            return false;
+        }
+    }
+    return true;
 }
 
-int main() {
-    int t;
-	cout<<"enter number";
-    cin>>t;
-
-	int ans = smallestNumber(t);
-	cout<<ans<<endl;
+int main(){
+    int cnt = 1;
+    int num =  2;
+    while(cnt < 10001){
+        num++;
+        if(isPrime(num)){
+            cnt++;
+        }
+    }
+    cout<<num<<endl;
     return 0;
 }
 
