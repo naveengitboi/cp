@@ -1,13 +1,21 @@
 #include <bits/stdc++.h>
+#include <climits>
 using namespace std;
 
+#define mod 1000000007
+#define int long long
+#define pii pair<int, int>
+#define vvi vector<vector<int>>
+#define vi vector<int>
+#define vs vector<string>
+#define vvs vector<vector<string>>
+#define mii map<int, int>
+#define si set<int>
+#define mll map<int ,int>
 
-int main(){
-    int t;
-    cin >>t;
-    while(t--){
+
+class Solution{
+    void func(){
 
     }
-    return 0;
-}
-
+};
