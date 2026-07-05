@@ -21,7 +21,7 @@ using namespace std;
 #define re rend
 #define gcd(a, b) __gcd(a,b)
 #define lcm(a,b) (a/(gcd(a, b)*b))
-#define bug(x) cerr<<#x<<" "<<x<<endl
+#define bug(x) cout<<#x<<" "<<x<<endl
 
 // functions
 void yes() { cout<<"YES\n"; }
@@ -43,30 +43,31 @@ void _input(vi& a, int s, int  e){
     }
 }
 
-
-
-
-
-
 void solve(){
     int n;
     cin>>n;
-    int a = (1LL<<34) + (1LL<<35);
-    int b = (1LL<<34);
-    int c = (1LL<<33);
-    int d = (1LL<<33) + (1LL<<34);
-    cerr<<a<<" "<<b<<" "<<c<<" "<<d<<endl;
-    cout<<a<<" "<<b<<" "<<c<<" "<<d<<endl;
-    return;
 }
 
 int32_t main() {
     ios_base::sync_with_stdio(0);
     cin.tie(0); cout.tie(0);
-    int t;
-    cin>>t;
-    while(t--){
-        solve();
+    string s;
+    cin>>s;
+    int m;
+    cin>>m;
+    int n = s.size();
+    vi pref(n, 0);
+    for(int i = 1; i <n ;i++){
+        pref[i] += pref[i-1] + (s[i] == s[i-1]);
+        // cout<<pref[i]<<" ";
+    }
+    // cout<<endl;
+    while(m--){
+        int l , r;
+        cin>>l>>r;
+        l--, r--;
+        int ans = pref[r] - pref[l];
+        cout<<ans<<endl;
     }
     return 0;
 }

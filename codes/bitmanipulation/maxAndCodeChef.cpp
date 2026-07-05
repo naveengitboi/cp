@@ -21,7 +21,7 @@ using namespace std;
 #define re rend
 #define gcd(a, b) __gcd(a,b)
 #define lcm(a,b) (a/(gcd(a, b)*b))
-#define bug(x) cerr<<#x<<" "<<x<<endl
+#define bug(x) cout<<#x<<" "<<x<<endl
 
 // functions
 void yes() { cout<<"YES\n"; }
@@ -49,14 +49,33 @@ void _input(vi& a, int s, int  e){
 
 
 void solve(){
-    int n;
-    cin>>n;
-    int a = (1LL<<34) + (1LL<<35);
-    int b = (1LL<<34);
-    int c = (1LL<<33);
-    int d = (1LL<<33) + (1LL<<34);
-    cerr<<a<<" "<<b<<" "<<c<<" "<<d<<endl;
-    cout<<a<<" "<<b<<" "<<c<<" "<<d<<endl;
+    int n, k;
+    cin>>n>>k;
+    vi vec(n,0);
+    _input(vec, 0,n-1);
+    auto comp = [](pii a, pii b){
+        if(a.f == b.f)
+            return a.s > b.s;
+        return a.f < b.f;
+    };
+    priority_queue<pii, vector<pii>, decltype(comp)> pq{comp};
+    for(int i = 0; i <= 31;i++){
+        int cnt = 0;
+        for(auto it: vec){
+            cnt += (it&(1<<i)?1:0);
+        }
+        pq.push(make_pair((1<<i)*cnt, i));
+    }
+
+    int x = 0;
+    while(k--){
+        pii p = pq.top();
+        pq.pop();
+        int i = p.s;
+        // cout<<p.f<<" "<<p.s<<endl;
+        x |= (1<<i);
+    }
+    cout<<x<<endl;
     return;
 }
 

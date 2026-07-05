@@ -21,7 +21,7 @@ using namespace std;
 #define re rend
 #define gcd(a, b) __gcd(a,b)
 #define lcm(a,b) (a/(gcd(a, b)*b))
-#define bug(x) cerr<<#x<<" "<<x<<endl
+#define bug(x) cout<<#x<<" "<<x<<endl
 
 // functions
 void yes() { cout<<"YES\n"; }
@@ -51,23 +51,14 @@ void _input(vi& a, int s, int  e){
 void solve(){
     int n;
     cin>>n;
-    int a = (1LL<<34) + (1LL<<35);
-    int b = (1LL<<34);
-    int c = (1LL<<33);
-    int d = (1LL<<33) + (1LL<<34);
-    cerr<<a<<" "<<b<<" "<<c<<" "<<d<<endl;
-    cout<<a<<" "<<b<<" "<<c<<" "<<d<<endl;
-    return;
+    cout<<__builtin_popcount(n)<<endl;
+
 }
 
 int32_t main() {
     ios_base::sync_with_stdio(0);
     cin.tie(0); cout.tie(0);
-    int t;
-    cin>>t;
-    while(t--){
-        solve();
-    }
+    solve();
     return 0;
 }
 

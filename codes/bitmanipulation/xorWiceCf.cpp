@@ -21,7 +21,7 @@ using namespace std;
 #define re rend
 #define gcd(a, b) __gcd(a,b)
 #define lcm(a,b) (a/(gcd(a, b)*b))
-#define bug(x) cerr<<#x<<" "<<x<<endl
+#define bug(x) cout<<#x<<" "<<x<<endl
 
 // functions
 void yes() { cout<<"YES\n"; }
@@ -44,20 +44,18 @@ void _input(vi& a, int s, int  e){
 }
 
 
-
-
-
-
 void solve(){
-    int n;
-    cin>>n;
-    int a = (1LL<<34) + (1LL<<35);
-    int b = (1LL<<34);
-    int c = (1LL<<33);
-    int d = (1LL<<33) + (1LL<<34);
-    cerr<<a<<" "<<b<<" "<<c<<" "<<d<<endl;
-    cout<<a<<" "<<b<<" "<<c<<" "<<d<<endl;
-    return;
+    int a, b;
+    cin>>a>>b;
+    int x = 0;
+    for(int i = 0; i <=31;i++){
+        if((a&(1LL<<i)) && (b&(1LL<<i))){
+            x |= (1LL<<i);
+        }
+    }
+    int ans = (a^x) + (b^x);
+    // cout<<x<<" ";
+    cout<<ans<<endl;
 }
 
 int32_t main() {
