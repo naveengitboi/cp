@@ -100,18 +100,10 @@ void _input(vector<T>& vec, int a, int b){
     }
 }
 
-void solve(){
-    int n;
-    cin >> n;
-    if(n == 10){
-        cout<<-1<<nl;
-        return;
-    }
-    int rem = n%12;
-    int a = rem;
-    if(rem == 10) a = 22;
-    int b = n - a;
-    cout<<a<<" "<<b<<nl;
+string solve(){
+    int x, y;
+    cin >> x>>y;
+    return !(x%y == 0)? "No": "Yes";
 }
 
 int32_t main() {
@@ -120,7 +112,7 @@ int32_t main() {
     int t;
     cin >> t;
     while(t--){
-        solve();
+        cout<<solve()<<nl;
     }
     return 0;
 }

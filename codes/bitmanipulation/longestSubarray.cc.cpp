@@ -100,18 +100,22 @@ void _input(vector<T>& vec, int a, int b){
     }
 }
 
-void solve(){
+int solve(){
     int n;
     cin >> n;
-    if(n == 10){
-        cout<<-1<<nl;
-        return;
+    if(n <= 4){
+        if(n <= 2) return 1;
+        return 2;
     }
-    int rem = n%12;
-    int a = rem;
-    if(rem == 10) a = 22;
-    int b = n - a;
-    cout<<a<<" "<<b<<nl;
+    int bits = ceil(log2(n));
+    int x =(1LL<<bits) - 1;
+    int num = min(n,x);
+    int y = (1LL<<(bits-1));
+    int ans = abs(num - y + 1);
+    int z = (1LL<<(bits-2));
+    // dbg(x,y,num, ans, z);
+    ans = max(ans, (z-y));
+    return ans;
 }
 
 int32_t main() {
@@ -120,7 +124,7 @@ int32_t main() {
     int t;
     cin >> t;
     while(t--){
-        solve();
+        cout<<solve()<<nl;
     }
     return 0;
 }

@@ -100,18 +100,33 @@ void _input(vector<T>& vec, int a, int b){
     }
 }
 
-void solve(){
+int solve(){
     int n;
     cin >> n;
-    if(n == 10){
-        cout<<-1<<nl;
-        return;
+    vi a(n);
+    _input(a, 0, n);
+    _sort(a);
+    // dbgVec(a);
+    rep(i, 1, 1025){
+        bool found = true;
+        set<int> s;
+        rep(j, 0, n){
+            // dbg(i, j, a[j]);
+            int x = (a[j]^i);
+            if(find(a.B, a.E, x) == a.E){
+                found = false;
+                break;
+            }else{
+                s.insert(x);
+            }
+        }
+        if(s.size() != a.size()) found = false;
+        if(found){
+            return i;
+        }
     }
-    int rem = n%12;
-    int a = rem;
-    if(rem == 10) a = 22;
-    int b = n - a;
-    cout<<a<<" "<<b<<nl;
+    return -1;
+    
 }
 
 int32_t main() {
@@ -120,7 +135,7 @@ int32_t main() {
     int t;
     cin >> t;
     while(t--){
-        solve();
+        cout<<solve()<<nl;
     }
     return 0;
 }

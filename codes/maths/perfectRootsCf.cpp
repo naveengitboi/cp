@@ -103,15 +103,10 @@ void _input(vector<T>& vec, int a, int b){
 void solve(){
     int n;
     cin >> n;
-    if(n == 10){
-        cout<<-1<<nl;
-        return;
+    rep(i, 1, n+1){
+        cout<<i<<" ";
     }
-    int rem = n%12;
-    int a = rem;
-    if(rem == 10) a = 22;
-    int b = n - a;
-    cout<<a<<" "<<b<<nl;
+    cout<<nl;
 }
 
 int32_t main() {

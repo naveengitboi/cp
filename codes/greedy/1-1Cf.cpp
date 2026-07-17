@@ -103,15 +103,30 @@ void _input(vector<T>& vec, int a, int b){
 void solve(){
     int n;
     cin >> n;
-    if(n == 10){
-        cout<<-1<<nl;
-        return;
+    string s;
+    cin>>s;
+    rep(i, 1, n-1){
+        if(s[i-1] == s[i+1] && s[i-1] == '1'){
+            s[i] = '1';
+        }
     }
-    int rem = n%12;
-    int a = rem;
-    if(rem == 10) a = 22;
-    int b = n - a;
-    cout<<a<<" "<<b<<nl;
+    dbg(s);
+    int minAns = 0, maxAns = 0;
+    int cnt = 0;
+    rep(i, 0, n){
+        if(s[i] == '1'){
+            cnt++;
+            maxAns++;
+        }else{
+            minAns += (cnt - (cnt-1)/2);
+            cnt = 0;
+        }
+    }
+    if(cnt != 0){
+        minAns += (cnt - (cnt-1)/2);
+    }
+    cout<<minAns<<" "<<maxAns<<nl;
+    
 }
 
 int32_t main() {
